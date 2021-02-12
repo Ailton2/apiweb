@@ -1,19 +1,34 @@
 package br.com.api.controller;
 
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.com.api.model.Cliente;
+import br.com.api.repository.ClienteRepository;
 
 @RestController
 @RequestMapping(value = "/clientes")
 public class ClienteController {
 	
+	@Autowired
+	private ClienteRepository clienteRepository;
 	
 	
-	@GetMapping(value = "/")
-	public void buscar() {
+	
+	@GetMapping(value = "/{id}", produces = "application/json")
+	public ResponseEntity<Cliente> buscarClientes(@PathVariable Long id) {
 		
-		System.out.println("chamou");
+		Optional<Cliente> cliente = clienteRepository.findById(id);
+		
+		return new ResponseEntity<Cliente>(cliente.get(), HttpStatus.OK);
+		
 		
 	}
 
