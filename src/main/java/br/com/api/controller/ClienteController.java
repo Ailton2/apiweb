@@ -1,5 +1,6 @@
 package br.com.api.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,4 +44,12 @@ public class ClienteController {
 		return new ResponseEntity<Cliente>(clienteSalvo, HttpStatus.CREATED);
 	}
 
+	
+	@GetMapping(value = "/" ,produces = "application/json")
+	public ResponseEntity<List<Cliente>>  buscarTodos(){
+		
+		List<Cliente> list = (List<Cliente>) clienteRepository.findAll();
+		
+		return new ResponseEntity<List<Cliente>>(list, HttpStatus.OK);
+	}
 }
