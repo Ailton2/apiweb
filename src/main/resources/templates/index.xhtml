@@ -10,11 +10,20 @@
 <SCRIPT >
    function carregarDados() {
 	   var xhttp = new XMLHttpRequest();
-	   
+      xhttp.onreadystatechange = function(){
+         if(xhttp.readyState == 4 && xhttp.status ==200){
+            document.getElementById("display").innerHTML =xhttp.responseText;
+         }
+      }
+	   xhttp.open("GET","http://localhost:8080/apiweb/clientes/",true)
+      xhttp.send();
 	
 }
 
 
 </SCRIPT>
+<DIV id="display">
+
+</DIV>
 
 </html>
