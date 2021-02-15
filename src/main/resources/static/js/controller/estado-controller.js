@@ -1,4 +1,4 @@
-appCliente.controller("estadoController",function($scope,$http){
+appCliente.controller("detalheClienteController",function($scope,$http){
 	
 	
 	

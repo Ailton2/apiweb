@@ -1,4 +1,4 @@
-appClientecontroller("cidadeController",function($scope,$http){
+appCliente.controller("cidadeController",function(){
 	
 	
 	
