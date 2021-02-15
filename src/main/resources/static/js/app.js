@@ -5,10 +5,11 @@ var appCliente = angular.module("appCliente",[]);
 
 appCliente.controller("indexController",function($scope,$http){
 	
-	$scope.nome="Ailton"
-	$scope.sobrenome="Ferreira"	
+	//$scope.nome="Ailton"
+	//$scope.sobrenome="Ferreira"	
 		
 	$scope.clientes=[]	
+	$scope.cliente={}
 		
 
 
@@ -26,8 +27,24 @@ appCliente.controller("indexController",function($scope,$http){
 		});		
 		
 	}
+	//metodo para salvar cliente
+	$scope.salvarCliente=function(){
+	    $http({
+			method : 'POST',
+			url : 'http://localhost:8080/apiweb/clientes/',data:$scope.cliente
+		}).then(function success(response) {
+			$scope.clientes.push(response.data)
+		    console.log(response.status)
+		}, function error(response) {
+			
+			   console.log(response.status)
+		});		
+		
+	}
 	
 	$scope.carregarClientes();
+	
+	
 	
 })
 

@@ -10,16 +10,20 @@
 
 </HEAD>
 <BODY ng-controller="indexController">
-oi {{nome +' ' + sobrenome}}
+
 <br>
 {{clientes}}
-</BODY>
+
+<br>
+<input type="text" ng-model="cliente.nome" />
+<input type="button" value="Salvar" ng-click="salvarCliente()" />
+
 
 <div ng-repeat="cli in clientes">
-{{cli.nome}}
+{{cli.nome}} <input type="button" value="-"/> 
 
 </div>
-
+</BODY>
 <script >
 
 </script>
