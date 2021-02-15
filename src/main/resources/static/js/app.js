@@ -3,7 +3,7 @@ var appCliente = angular.module("appCliente",[]);
 
 //criaçao de contrllers
 
-appCliente.controller("indexController",function($scope,$http){
+appCliente.controller("clienteController",function($scope,$http){
 	
 	//$scope.nome="Ailton"
 	//$scope.sobrenome="Ferreira"	
