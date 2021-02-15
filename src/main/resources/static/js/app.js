@@ -42,6 +42,21 @@ appCliente.controller("indexController",function($scope,$http){
 		
 	}
 	
+	//metodo para excluir cliente
+	$scope.deletarCliente=function(cliente){
+	    $http({
+			method : 'DELETE',
+			url : 'http://localhost:8080/apiweb/clientes/'+cliente.id})
+		.then(function success(response) {
+			pos = $scope.clientes.indexOf(cliente);
+		    $scope.clientes.splice(pos , 1);
+		}, function error(response) {
+			
+			   console.log(response.status)
+		});		
+		
+	}
+	
 	$scope.carregarClientes();
 	
 	
