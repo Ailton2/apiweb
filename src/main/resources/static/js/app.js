@@ -1,4 +1,4 @@
 //criaçao do mudulo principal da aplicaçao
-var appCliente = angular.module("appCliente",[]); 
+var appCliente = angular.module("appCliente",['ngRoute']); 
 
 
