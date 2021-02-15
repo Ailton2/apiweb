@@ -14,7 +14,7 @@ appCliente.controller("indexController",function($scope,$http){
 
 
 		// Simple GET request example:
-	$scope.carregarClientes=function(){
+	carregarClientes=function(){
 	    $http({
 			method : 'GET',
 			url : 'http://localhost:8080/apiweb/clientes/'
@@ -33,7 +33,9 @@ appCliente.controller("indexController",function($scope,$http){
 			method : 'POST',
 			url : 'http://localhost:8080/apiweb/clientes/',data:$scope.cliente
 		}).then(function success(response) {
-			$scope.clientes.push(response.data)
+			//$scope.clientes.push(response.data)
+			carregarClientes();
+			$scope.cliente ={};
 		    console.log(response.status)
 		}, function error(response) {
 			
@@ -57,7 +59,32 @@ appCliente.controller("indexController",function($scope,$http){
 		
 	}
 	
-	$scope.carregarClientes();
+	$scope.alterarCliente=function(cli){
+		$scope.cliente =angular.copy(cli);
+		
+	}
+	
+	$scope.cancelarCliente=function(){
+		$scope.cliente ={};
+		
+	}
+	
+	//metodo para alterar cliente
+	$scope.editarCliente=function(cliente){
+	    $http({
+			method : 'PUT',
+			url : 'http://localhost:8080/apiweb/clientes/'+cliente.id})
+		.then(function success(response) {
+			pos = $scope.clientes.indexOf(cliente);
+		    $scope.clientes.splice(pos , 1);
+		}, function error(response) {
+			
+			   console.log(response.status)
+		});		
+		
+	}
+	
+	carregarClientes();
 	
 	
 	
