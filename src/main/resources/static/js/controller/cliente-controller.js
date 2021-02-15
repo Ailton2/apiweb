@@ -14,7 +14,7 @@ appCliente.controller("clienteController",function($scope,$http){
 	carregarClientes=function(){
 	    $http({
 			method : 'GET',
-			url : 'http://localhost:8080/apiweb/clientes/'
+			url : 'http://localhost:8080/clientes/'
 		}).then(function success(response) {
 			$scope.clientes= response.data
 		    console.log(response.status)
@@ -28,7 +28,7 @@ appCliente.controller("clienteController",function($scope,$http){
 	$scope.salvarCliente=function(){
 	    $http({
 			method : 'POST',
-			url : 'http://localhost:8080/apiweb/clientes/',data:$scope.cliente
+			url : 'http://localhost:8080/clientes/',data:$scope.cliente
 		}).then(function success(response) {
 			//$scope.clientes.push(response.data)
 			carregarClientes();
@@ -45,7 +45,7 @@ appCliente.controller("clienteController",function($scope,$http){
 	$scope.deletarCliente=function(cliente){
 	    $http({
 			method : 'DELETE',
-			url : 'http://localhost:8080/apiweb/clientes/'+cliente.id})
+			url : 'http://localhost:8080/clientes/'+cliente.id})
 		.then(function success(response) {
 			pos = $scope.clientes.indexOf(cliente);
 		    $scope.clientes.splice(pos , 1);
@@ -70,7 +70,7 @@ appCliente.controller("clienteController",function($scope,$http){
 	$scope.editarCliente=function(cliente){
 	    $http({
 			method : 'PUT',
-			url : 'http://localhost:8080/apiweb/clientes/'+cliente.id})
+			url : 'http://localhost:8080/clientes/'+cliente.id})
 		.then(function success(response) {
 			pos = $scope.clientes.indexOf(cliente);
 		    $scope.clientes.splice(pos , 1);
