@@ -1,13 +1,15 @@
 
 <div  ng-controller="clienteController">
 
-	<br> {{clientes}}
 
-	<br>
-	<input type="text" ng-model="cliente.nome" />
-	<input type="button" value="Salvar" ng-click="salvarCliente()" />
-    <input type="button" value="Cancelar" ng-click="cancelarCliente()">
-
+	<form novalidate name="frmCliente">
+	<div>
+	<input type="text" ng-model="cliente.nome" required="true" name="txtNome"/>
+	 <span ng-show="frmCliente.txtNome.$error.required && frmCliente.txtNome.$dirty " >Informe o nome</span>
+	</div>
+	<input type="button" value="Salvar" ng-click="salvarCliente()" ng-disabled="frmCliente.$invalid" />
+    <input type="button" value="Cancelar" ng-click="cancelarCliente()" ng-disabled="frmCliente.$valid">
+   </form>
 	<div ng-repeat="cli in clientes">
 		{{cli.id+' '+ cli.nome}}
 		 <input type="button" value="Excluir" ng-click="deletarCliente(cli)" />
