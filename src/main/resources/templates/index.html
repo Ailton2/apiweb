@@ -10,9 +10,15 @@
 
 </HEAD>
 <BODY ng-controller="indexController">
-oi {{nome}}
+oi {{nome +' ' + sobrenome}}
+<br>
+{{clientes}}
 </BODY>
 
+<div ng-repeat="cli in clientes">
+{{cli.nome}}
+
+</div>
 
 <script >
 
