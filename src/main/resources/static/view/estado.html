@@ -1,7 +1,24 @@
-<div>
+<style>
+    p{
+       background: red;
+    
+    }
 
-tela estado
+</style>
+<div ng-controller="estadoController">
+<p>Cadastro de Estado</p>
 
 
+UF:<input type="text" ng-model="estado.uf">
+
+
+ <input type="button" value="Salvar" ng-click="salvarEstados()" >
+
+
+<div ng-repeat="est in estados">
+  {{est.id+' '+est.uf}}
+
+
+</div>
 
 </div>

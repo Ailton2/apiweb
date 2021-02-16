@@ -25,20 +25,24 @@ appCliente.controller("clienteController",function($scope,$http){
 		
 	}
 	//metodo para salvar cliente
+	
 	$scope.salvarCliente=function(){
-	    $http({
-			method : 'POST',
-			url : 'http://localhost:8080/clientes/',data:$scope.cliente
-		}).then(function success(response) {
-			//$scope.clientes.push(response.data)
-			carregarClientes();
-			$scope.cliente ={};
-		    console.log(response.status)
-		}, function error(response) {
-			
-			   console.log(response.status)
-		});		
-		
+		if($scope.frmCliente.$valid){
+		    $http({
+				method : 'POST',
+				url : 'http://localhost:8080/clientes/',data:$scope.cliente
+			}).then(function success(response) {
+				//$scope.clientes.push(response.data)
+				carregarClientes();
+				$scope.cliente ={};
+				$scope.frmCliente.$setPristine(true)
+			}, function error(response) {
+				
+				   console.log(response.status)
+			});		
+	   }else{
+		  window.alert("Dados inválidos!")
+	   }
 	}
 	
 	//metodo para excluir cliente
